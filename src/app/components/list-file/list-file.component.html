@@ -14,7 +14,7 @@
       <td>{{item.id}}</td>
       <td>{{item.dateAdd | date: 'dd-MM-YYYY HH:mm'}}</td>
       <td>{{item.name}}</td>
-      <td><a class="btn btn-success" href='https://localhost:44346/UserFile/getFile/?id={{item.id}}' target="_blank">Cкачать</a></td>
+      <td><button class="btn btn-success"><a class="link" href='/UserFile/getFile/?id={{item.id}}' target="_blank">Скачать</a></button></td>
       <td><button class="btn btn-danger" (click)="delete(item.id,item.name)">Удалить</button></td>
     </tr>
     </tbody>

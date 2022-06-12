@@ -15,12 +15,6 @@ export class ListFileComponent {
     this.listFiles$ = this.handleService.listFiles$;
   }
 
-  public async download(id: number) {
-    this.handleService.download(id)
-      .pipe(first())
-      .subscribe();
-  }
-
   public changePage(value: number) {
     this.handleService.getListFiles(value);
   }

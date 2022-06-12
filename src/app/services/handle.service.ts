@@ -23,14 +23,10 @@ export class HandleService {
   public getListFiles(page?: number) {
     this._api.getListFiles(page)
       .pipe(first())
-      .subscribe(pageFile => this.listFiles$.next(pageFile));;
+      .subscribe(pageFile => this.listFiles$.next(pageFile));
   }
 
   public deleteFile(id: number) {
     return this._api.deleteFile(id);
-  }
-
-  public download(id: number) {
-    return this._api.getFile(id);
   }
 }

@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component} from '@angular/core';
 import * as CryptoJS from "crypto-js";
 import {ApiService} from "../../services/api.service";
-import {switchMap, of, tap} from "rxjs";
+import {of, switchMap} from "rxjs";
 import {HandleService} from "../../services/handle.service";
 
 @Component({
@@ -39,7 +39,7 @@ export class UploadFileComponent {
     })
   }
 
-  public save = async () => {
+  public async save() {
     if (!this.file) {
       return alert('Выберите файл');
     }
@@ -57,13 +57,12 @@ export class UploadFileComponent {
             : this._api.sendFile(formData)
         )
       )
-      .subscribe(message => {
+      .subscribe({next: message => {
         if (message) {
           alert(message)
         } else {
           this.handleService.getListFiles();
         }
-
-      }, (err) => alert(err.error))
+      }, error: (err) => alert(err.error)})
   }
 }

@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {ExistHash, File, PageFile, User} from "../types";
+import {ExistHash, PageFile, User} from "../types";
 
 @Injectable({
   providedIn: 'root'
@@ -9,30 +9,26 @@ import {ExistHash, File, PageFile, User} from "../types";
 
 export class ApiService {
 
-  public readonly api = 'https://localhost:44346';
-
   constructor(private readonly _http: HttpClient) {
   }
+
   public getUser(): Observable<User> {
-    return this._http.get<User>(`${this.api}/User/GetUser`)
-  }
-  public getFile(id :number): Observable<File> {
-    return this._http.get<File>(`${this.api}/UserFile/getFile/?id=${id}`)
+    return this._http.get<User>(`/User/GetUser`)
   }
 
   public getListFiles(page:number = 1): Observable<PageFile> {
-    return this._http.get<PageFile>(`${this.api}/UserFile/?page=${page}`)
+    return this._http.get<PageFile>(`/UserFile/?page=${page}`)
   }
 
   public checkExistHash(hash: string): Observable<ExistHash> {
-    return this._http.post<ExistHash>(`${this.api}/UserFile/existHash`, {hash})
+    return this._http.post<ExistHash>(`/UserFile/existHash`, {hash})
   }
 
   public sendFile(file: FormData): Observable<void> {
-    return this._http.post<void>(`${this.api}/UserFile`, file)
+    return this._http.post<void>(`/UserFile`, file)
   }
 
   public deleteFile(id: number): Observable<void> {
-    return this._http.delete<void>(`${this.api}/UserFile/?id=${id}`)
+    return this._http.delete<void>(`/UserFile/?id=${id}`)
   }
 }
