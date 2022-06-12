@@ -1,8 +1,6 @@
-<!--<button (click)='get()'>add</button>-->
-<h1 *ngIf="user$ | async as user">
-  {{user.userName}}
-</h1>
-
-<input type="file" (change)="change($event)">
-<button  (click)='delete(12)'>Удалить фаил</button>
+<app-header></app-header>
+<div class="container">
+  <app-upload-file></app-upload-file>
+  <app-list-files></app-list-files>
+</div>
 

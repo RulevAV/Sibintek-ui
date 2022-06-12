@@ -1,20 +1,25 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import {AppComponent} from './app.component';
+import {HttpClientModule} from '@angular/common/http';
+import {HeaderComponent} from './components/header/header.component';
+import {ListFileComponent} from './components/list-file/list-file.component';
+import {UploadFileComponent} from './components/upload-file/upload-file.component';
+import {PaginationComponent} from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ListFileComponent,
+    UploadFileComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

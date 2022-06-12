@@ -1,0 +1,23 @@
+<ng-container *ngIf="listFiles$ | async as pageFile">
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Дата</th>
+      <th>Название</th>
+      <th>Скачать</th>
+      <th>Удалить</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr  *ngFor="let item of pageFile.files ">
+      <td>{{item.id}}</td>
+      <td>{{item.dateAdd | date: 'dd-MM-YYYY HH:mm'}}</td>
+      <td>{{item.name}}</td>
+      <td><a class="btn btn-success" href='https://localhost:44346/UserFile/getFile/?id={{item.id}}' target="_blank">Cкачать</a></td>
+      <td><button class="btn btn-danger" (click)="delete(item.id,item.name)">Удалить</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <app-pagination  (changePage)="changePage($event)" [count]="pageFile.count" [page]="pageFile.page" [portionsSize]="8" ></app-pagination>
+</ng-container>

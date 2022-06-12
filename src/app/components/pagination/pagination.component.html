@@ -1,0 +1,14 @@
+<nav *ngIf="count!==0" class="d-flex justify-content-center">
+  <ul class="pagination">
+    <li class="page-item">
+      <button [disabled]="page===1" (click)="changePage.emit(page-1)" class="btn page-link">Назад</button>
+    </li>
+    <li *ngFor="let item of  this.massItems" class="page-item" [ngClass]="{'active': item === page}">
+      <button (click)="changePage.emit(item)"  class="page-link">{{item}}</button>
+    </li>
+
+    <li class="page-item">
+      <button [disabled]="count===page" (click)="changePage.emit(page+1)" class="btn page-link">Дальше</button>
+    </li>
+  </ul>
+</nav>

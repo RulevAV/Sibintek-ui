@@ -1,0 +1,6 @@
+<div class="d-flex">
+    <input #file type="file" (change)="change($event)" hidden>
+    <button  class="btn btn-success" (click)="file.click()">Выбрать файл</button>
+    <span class="m-1">{{message}}</span>
+    <button class="btn btn-success ms-auto" (click)="save()" >Сохранить</button>
+</div>

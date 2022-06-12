@@ -1,0 +1,6 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <h1 class="navbar-brand ms-3">Sibintek</h1>
+    <h1 class="me-3" *ngIf="user$ | async as user">
+      {{user.userName}}
+    </h1>
+</nav>
